@@ -6,6 +6,7 @@ import com.devsuperior.sdlist.entities.Game;
 import com.devsuperior.sdlist.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class GameServiceImpl implements GameService {
     private GameRepository repository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<GameMinDTO> findAll() {
         return repository.findAll()
                 .stream()
@@ -24,6 +26,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public GameDTO findById(Long id) {
         Game result = repository.findById(id).orElse(null);
         if (result != null) {
