@@ -8,4 +8,5 @@ import java.util.List;
 public interface GameService {
     public List<GameMinDTO> findAll();
     public GameDTO findById(Long id);
+    public List<GameMinDTO> findByList(Long id);
 }

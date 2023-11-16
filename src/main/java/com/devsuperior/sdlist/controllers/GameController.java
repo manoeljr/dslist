@@ -1,7 +1,6 @@
 package com.devsuperior.sdlist.controllers;
 
 import com.devsuperior.sdlist.dto.GameDTO;
-import com.devsuperior.sdlist.dto.GameListDTO;
 import com.devsuperior.sdlist.dto.GameMinDTO;
 import com.devsuperior.sdlist.services.game.GameService;
 import org.springframework.beans.factory.annotation.Autowired;

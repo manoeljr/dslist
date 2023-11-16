@@ -3,6 +3,7 @@ package com.devsuperior.sdlist.services.game;
 import com.devsuperior.sdlist.dto.GameDTO;
 import com.devsuperior.sdlist.dto.GameMinDTO;
 import com.devsuperior.sdlist.entities.Game;
+import com.devsuperior.sdlist.projection.GameMinProjetion;
 import com.devsuperior.sdlist.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -43,6 +44,14 @@ public class GameServiceImpl implements GameService {
             );
         }
         return null;
+    }
+
+    @Override
+    public List<GameMinDTO> findByList(Long id) {
+        return repository.searchByList(id)
+                .stream()
+                .map(x -> new GameMinDTO(x.getId(), x.getTitle(), x.getYear(), x.getImgUrl(), x.getShortDescription()))
+                .toList();
     }
 
 }
